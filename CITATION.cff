@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use this code or the derived measurements, please cite the paper and this repository."
+title: "A camera-column dependence in SDSS handedness measurements: localization, calibration and a conditional null"
+authors:
+  - family-names: Chen
+    given-names: Yen-Fu
+    affiliation: "Jecision Digital Co., Ltd., New Taipei City, Taiwan"
+version: "1.0.0"
+license: MIT
+repository-code: "https://github.com/kqalea/Kerr-Cartan"
+keywords:
+  - chirality
+  - galaxy spins
+  - SDSS
+  - systematics
+  - camcol 5

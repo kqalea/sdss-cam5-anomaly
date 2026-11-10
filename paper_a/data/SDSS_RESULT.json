@@ -1,0 +1,538 @@
+{
+ "date": "2026-11-10",
+ "note": "Canonical SDSS results, measured WITHOUT the coordinate grid overlay (opt=G was a grid, not grayscale). Unique galaxies, single linkage at 1.2 arcsec.",
+ "samples": {
+  "24k": {
+   "rows": 10647,
+   "galaxies": 7710,
+   "A": 0.0514,
+   "sigma_jk_8x6": 0.0108,
+   "significance": 4.8
+  },
+  "36k_old_sky": {
+   "rows": 15952,
+   "galaxies": 11271,
+   "A": 0.0294,
+   "significance_binomial": 3.1,
+   "note": "clean, no grid"
+  },
+  "new_sky": {
+   "rows": 15456,
+   "galaxies": 15456,
+   "A": 0.0155,
+   "significance_binomial": 1.9,
+   "note": "clean, no grid"
+  },
+  "combined": {
+   "rows": 31408,
+   "galaxies": 26727,
+   "A": 0.0214,
+   "sigma_jk_10x8": 0.0061,
+   "significance": 3.49,
+   "note": "clean, no grid"
+  }
+ },
+ "columns_combined": {
+  "1": {
+   "N": 4476,
+   "A": 0.0018
+  },
+  "2": {
+   "N": 4375,
+   "A": -0.0487
+  },
+  "3": {
+   "N": 4128,
+   "A": -0.0334
+  },
+  "4": {
+   "N": 4042,
+   "A": 0.0079
+  },
+  "5": {
+   "N": 5815,
+   "A": 0.1209
+  },
+  "6": {
+   "N": 3891,
+   "A": 0.046
+  },
+  "not_5": {
+   "N": 20912,
+   "A": -0.0063,
+   "sigma_jk_10x8": 0.008,
+   "significance": -0.79
+  }
+ },
+ "camcol5": {
+  "N": 5815,
+  "A": 0.1209,
+  "sigma_jk_10x8": 0.0164,
+  "significance_jackknife": 7.38,
+  "significance_binomial": 9.26,
+  "per_sky": {
+   "old_sky": {
+    "N": 2457,
+    "A": 0.1274,
+    "sigma": 0.02,
+    "significance": 6.4,
+    "note": "discovery sample"
+   },
+   "new_sky": {
+    "N": 3358,
+    "A": 0.1161,
+    "sigma": 0.0171,
+    "significance": 6.8,
+    "note": "independent; this is the clean number"
+   }
+  },
+  "combination": {
+   "N_weighted_A": 0.1209,
+   "naive_combined_significance": 7.38,
+   "note": "discovery and confirmation reported separately; quote 6.8"
+  }
+ },
+ "inclination_new_sample": {
+  "coverage": "15458 of 15458 by objid, positions agree to 0.00 arcsec",
+  "by_axis_ratio": [
+   {
+    "bin": "0.05-0.35",
+    "N": 3092,
+    "A": 0.02
+   },
+   {
+    "bin": "0.35-0.50",
+    "N": 3091,
+    "A": 0.038
+   },
+   {
+    "bin": "0.50-0.64",
+    "N": 3092,
+    "A": 0.015
+   },
+   {
+    "bin": "0.64-0.92",
+    "N": 3091,
+    "A": 0.033
+   },
+   {
+    "bin": "0.92-1.00",
+    "N": 3092,
+    "A": 0.009
+   }
+  ],
+  "camcol5_by_axis_ratio": [
+   0.091,
+   0.079,
+   0.058,
+   0.21,
+   0.245
+  ],
+  "other_by_axis_ratio": [
+   0,
+   0.027,
+   0.003,
+   -0.016,
+   -0.059
+  ],
+  "median_axis_ratio_by_column": {
+   "1": 0.575,
+   "2": 0.531,
+   "3": 0.576,
+   "4": 0.577,
+   "5": 0.569,
+   "6": 0.564
+  }
+ },
+ "field_statistics": {
+  "cell_excess_sd_2_8_deg": "0.05 to 0.12 above Poisson, survives without camcol 5",
+  "negative_cell_fraction_3deg": 0.44,
+  "cell_range": [
+   -0.27,
+   0.35
+  ],
+  "note": "1-2 sigma per bin; a direction, not a detection"
+ },
+ "repeat_observations": {
+  "pairs_within_1_2_arcsec": 21464,
+  "sign_agreement_cam5": 0.845,
+  "sign_agreement_other": 0.855
+ },
+ "stratified_match": {
+  "contrast": 0.115,
+  "sigma": 0.028,
+  "significance": 4.1,
+  "contrast_4quantile": 0.165,
+  "sigma_4quantile": 0.046,
+  "significance_4quantile": 3.6
+ },
+ "sampling_02": {
+  "paired_difference": 0.009,
+  "sigma": 0.0066,
+  "sign_agreement": 0.912
+ },
+ "corrections": [
+  "the 4.7 sigma was one coarse grid (RA 36 x Dec 36, 38 occupied cells, sigma 0.0107)",
+  "the 5.2 sigma was aperture truncation (128 px at 0.2 arcsec = 25.6 arcsec field, 37 per cent clipped)",
+  "the sample is 11,271 unique galaxies at 1.2 arcsec, not 15,952 rows and not 9,674 (72-arcsec link)",
+  "the stored objids are float64-rounded and cannot be used as keys",
+  "the first expAB_r fetch matched 51 per cent by position; the objid fetch matches 100 per cent",
+  "opt=G is a coordinate grid, not grayscale; the clean measurement removes it and supersedes the grid amplitudes"
+ ],
+ "grid_systematic": {
+  "what": "opt=G draws a coordinate grid on the SkyServer cutout; every earlier cutout had it",
+  "sign_agreement_grid_vs_clean": 0.892,
+  "effect": "amplitudes were inflated by about 0.01 to 0.02; camcol 5 fell from 0.1391 to 0.1209 and survived",
+  "previous_with_grid": {
+   "camcol5": 0.1391,
+   "not5": 0.0013,
+   "all": 0.0313
+  }
+ },
+ "calibration": {
+  "sample": "independent sky, 15,456 galaxies with flags",
+  "rk_edges_px": [
+   0.0,
+   17.328009259259254,
+   38.986986531986524,
+   200.0
+  ],
+  "note": "per-column offset relative to the mean of the five unaffected columns, as a function of the detection flag and the size bin",
+  "cells": [
+   {
+    "cam": 1,
+    "flag": 0,
+    "rk_bin": 0,
+    "A": -0.013824884792626729,
+    "n": 217,
+    "bias": 0.04601234937836726,
+    "bias_err": 0.06787793573220123
+   },
+   {
+    "cam": 2,
+    "flag": 0,
+    "rk_bin": 0,
+    "A": -0.10204081632653061,
+    "n": 294,
+    "bias": -0.04220358215553662,
+    "bias_err": 0.058016760181144024
+   },
+   {
+    "cam": 3,
+    "flag": 0,
+    "rk_bin": 0,
+    "A": -0.16932907348242812,
+    "n": 313,
+    "bias": -0.10949183931143414,
+    "bias_err": 0.055707120499595864
+   },
+   {
+    "cam": 4,
+    "flag": 0,
+    "rk_bin": 0,
+    "A": -0.009771986970684038,
+    "n": 307,
+    "bias": 0.050065247200309956,
+    "bias_err": 0.05707028948804849
+   },
+   {
+    "cam": 5,
+    "flag": 0,
+    "rk_bin": 0,
+    "A": -0.12280701754385964,
+    "n": 285,
+    "bias": -0.06296978337286566,
+    "bias_err": 0.0587865134444485
+   },
+   {
+    "cam": 6,
+    "flag": 0,
+    "rk_bin": 0,
+    "A": -0.004219409282700422,
+    "n": 237,
+    "bias": 0.055617824888293574,
+    "bias_err": 0.06495640201556113
+   },
+   {
+    "cam": 1,
+    "flag": 0,
+    "rk_bin": 1,
+    "A": 0.05985915492957746,
+    "n": 568,
+    "bias": 0.017713080176892847,
+    "bias_err": 0.0418838283014887
+   },
+   {
+    "cam": 2,
+    "flag": 0,
+    "rk_bin": 1,
+    "A": 0.0364963503649635,
+    "n": 685,
+    "bias": -0.005649724387721114,
+    "bias_err": 0.03818258127742746
+   },
+   {
+    "cam": 3,
+    "flag": 0,
+    "rk_bin": 1,
+    "A": 0.06259541984732825,
+    "n": 655,
+    "bias": 0.020449345094643634,
+    "bias_err": 0.038996610019316834
+   },
+   {
+    "cam": 4,
+    "flag": 0,
+    "rk_bin": 1,
+    "A": 0.006666666666666667,
+    "n": 600,
+    "bias": -0.03547940808601795,
+    "bias_err": 0.04082392181788262
+   },
+   {
+    "cam": 5,
+    "flag": 0,
+    "rk_bin": 1,
+    "A": 0.04559270516717325,
+    "n": 658,
+    "bias": 0.003446630414488637,
+    "bias_err": 0.03894351972179053
+   },
+   {
+    "cam": 6,
+    "flag": 0,
+    "rk_bin": 1,
+    "A": 0.045112781954887216,
+    "n": 532,
+    "bias": 0.002966707202202601,
+    "bias_err": 0.04331135825138129
+   },
+   {
+    "cam": 1,
+    "flag": 0,
+    "rk_bin": 2,
+    "A": 0.006825938566552901,
+    "n": 586,
+    "bias": 0.01999131543454723,
+    "bias_err": 0.04130865684881375
+   },
+   {
+    "cam": 2,
+    "flag": 0,
+    "rk_bin": 2,
+    "A": -0.050505050505050504,
+    "n": 495,
+    "bias": -0.037339673637056175,
+    "bias_err": 0.04488929682498244
+   },
+   {
+    "cam": 3,
+    "flag": 0,
+    "rk_bin": 2,
+    "A": -0.06267029972752043,
+    "n": 367,
+    "bias": -0.0495049228595261,
+    "bias_err": 0.05209696559626142
+   },
+   {
+    "cam": 4,
+    "flag": 0,
+    "rk_bin": 2,
+    "A": 0.03225806451612903,
+    "n": 403,
+    "bias": 0.04542344138412336,
+    "bias_err": 0.049787623833955436
+   },
+   {
+    "cam": 5,
+    "flag": 0,
+    "rk_bin": 2,
+    "A": 0.10483870967741936,
+    "n": 496,
+    "bias": 0.1180040865454137,
+    "bias_err": 0.04465388499862143
+   },
+   {
+    "cam": 6,
+    "flag": 0,
+    "rk_bin": 2,
+    "A": 0.008264462809917356,
+    "n": 484,
+    "bias": 0.021429839677911684,
+    "bias_err": 0.045452993124730806
+   },
+   {
+    "cam": 1,
+    "flag": 1,
+    "rk_bin": 0,
+    "A": -0.04160688665710186,
+    "n": 697,
+    "bias": 0.01330402779011823,
+    "bias_err": 0.0378449010831746
+   },
+   {
+    "cam": 2,
+    "flag": 1,
+    "rk_bin": 0,
+    "A": -0.09319899244332494,
+    "n": 397,
+    "bias": -0.03828807799610485,
+    "bias_err": 0.04997011569919873
+   },
+   {
+    "cam": 3,
+    "flag": 1,
+    "rk_bin": 0,
+    "A": -0.07246376811594203,
+    "n": 552,
+    "bias": -0.01755285366872194,
+    "bias_err": 0.04245093080162917
+   },
+   {
+    "cam": 4,
+    "flag": 1,
+    "rk_bin": 0,
+    "A": -0.07918968692449356,
+    "n": 543,
+    "bias": -0.024278772477273468,
+    "bias_err": 0.042779338601781756
+   },
+   {
+    "cam": 5,
+    "flag": 1,
+    "rk_bin": 0,
+    "A": 0.2109181141439206,
+    "n": 806,
+    "bias": 0.26582902859114066,
+    "bias_err": 0.03443110049501369
+   },
+   {
+    "cam": 6,
+    "flag": 1,
+    "rk_bin": 0,
+    "A": 0.011904761904761904,
+    "n": 504,
+    "bias": 0.06681567635198199,
+    "bias_err": 0.04454038377688326
+   },
+   {
+    "cam": 1,
+    "flag": 1,
+    "rk_bin": 1,
+    "A": -0.01,
+    "n": 200,
+    "bias": 0.01665389700782844,
+    "bias_err": 0.07070714249635605
+   },
+   {
+    "cam": 2,
+    "flag": 1,
+    "rk_bin": 1,
+    "A": -0.004651162790697674,
+    "n": 215,
+    "bias": 0.022002734217130768,
+    "bias_err": 0.06819869625312851
+   },
+   {
+    "cam": 3,
+    "flag": 1,
+    "rk_bin": 1,
+    "A": 0.11392405063291139,
+    "n": 237,
+    "bias": 0.14057794764073983,
+    "bias_err": 0.06453407534425135
+   },
+   {
+    "cam": 4,
+    "flag": 1,
+    "rk_bin": 1,
+    "A": -0.15254237288135594,
+    "n": 236,
+    "bias": -0.1258884758735275,
+    "bias_err": 0.06433265060775263
+   },
+   {
+    "cam": 5,
+    "flag": 1,
+    "rk_bin": 1,
+    "A": 0.20192307692307693,
+    "n": 416,
+    "bias": 0.22857697393090537,
+    "bias_err": 0.04801910354538791
+   },
+   {
+    "cam": 6,
+    "flag": 1,
+    "rk_bin": 1,
+    "A": -0.08,
+    "n": 150,
+    "bias": -0.05334610299217156,
+    "bias_err": 0.08138795979750323
+   },
+   {
+    "cam": 1,
+    "flag": 1,
+    "rk_bin": 2,
+    "A": -0.017632241813602016,
+    "n": 397,
+    "bias": -0.03166210729389643,
+    "bias_err": 0.05018075900611498
+   },
+   {
+    "cam": 2,
+    "flag": 1,
+    "rk_bin": 2,
+    "A": -0.09947643979057591,
+    "n": 382,
+    "bias": -0.11350630527087033,
+    "bias_err": 0.050910671124655256
+   },
+   {
+    "cam": 3,
+    "flag": 1,
+    "rk_bin": 2,
+    "A": -0.07849829351535836,
+    "n": 293,
+    "bias": -0.09252815899565278,
+    "bias_err": 0.05824035222847514
+   },
+   {
+    "cam": 4,
+    "flag": 1,
+    "rk_bin": 2,
+    "A": 0.051470588235294115,
+    "n": 272,
+    "bias": 0.0374407227549997,
+    "bias_err": 0.06055353667194478
+   },
+   {
+    "cam": 5,
+    "flag": 1,
+    "rk_bin": 2,
+    "A": 0.12769010043041606,
+    "n": 697,
+    "bias": 0.11366023495012165,
+    "bias_err": 0.03756763844104928
+   },
+   {
+    "cam": 6,
+    "flag": 1,
+    "rk_bin": 2,
+    "A": 0.21428571428571427,
+    "n": 280,
+    "bias": 0.20025584880541986,
+    "bias_err": 0.05837323361209623
+   }
+  ],
+  "corrected_amplitude": -0.0116,
+  "corrected_error_bootstrap": 0.0089,
+  "corrected_ci95": [
+   -0.046,
+   0.023
+  ],
+  "method": "the statistical error (0.0089, a 300-draw bootstrap) and the intrinsic between-column SEM (0.0149, from the observed five-column scatter 0.0372 minus the measurement noise) combined in quadrature",
+  "corrected_error_statistical": 0.0089,
+  "corrected_error_intrinsic_column": 0.0149,
+  "corrected_error_total": 0.0174
+ }
+}

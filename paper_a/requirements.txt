@@ -1,0 +1,10 @@
+# Reproduces the paper's numbers (make check / make calibrate / make test / make figures).
+# Tested with Python 3.15.2.
+numpy==2.5.4
+scipy==1.18.1
+matplotlib==3.11.2
+astropy==8.0.2
+pillow==13.0.0
+requests==2.34.2
+# Only the scripts under analysis/ (not the paper_a targets) need scikit-learn:
+# scikit-learn==1.9.1
