@@ -1,4 +1,4 @@
-# Kerr-Cartan — Paper A replication package
+# SDSS cam5 anomaly — Paper A replication package
 
 **A camera-column dependence in SDSS handedness measurements: localization, calibration and a conditional null**
 Yen-Fu Chen (Jecision Digital Co., Ltd., New Taipei City, Taiwan)
