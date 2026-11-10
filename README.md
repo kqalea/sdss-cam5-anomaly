@@ -40,7 +40,7 @@ LICENSE             code MIT, data CC BY 4.0
 
 ## Cite
 
-If you use this code or the measurements, cite the paper and this repository. The DOI is pending.
+If you use this code or the measurements, cite the paper and this repository. DOI: 10.5281/zenodo.24112428 (https://doi.org/10.5281/zenodo.24112428).
 
 ## Licence
 

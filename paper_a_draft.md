@@ -293,6 +293,6 @@ errors, the column calibration, the figure scripts and eighteen unit tests, toge
 per-galaxy measurements and the calibration table. Four Makefile targets reproduce the paper:
 \`make check\` recomputes the per-column and flag tables, \`make calibrate\` recomputes the column
 calibration and the corrected amplitude, \`make test\` runs the unit tests and \`make figures\`
-regenerates the figures. The package is archived on Zenodo (DOI to be assigned) and is also
-available from the project repository.
+regenerates the figures. The package is available from the public repository
+(https://github.com/kqalea/sdss-cam5-anomaly) and is archived on Zenodo at https://doi.org/10.5281/zenodo.24112428 (doi:10.5281/zenodo.24112428).
 
