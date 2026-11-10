@@ -1,5 +1,8 @@
 # SDSS cam5 anomaly — Paper A replication package
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24112428.svg)](https://doi.org/10.5281/zenodo.24112428)
+
+
 **A camera-column dependence in SDSS handedness measurements: localization, calibration and a conditional null**
 Yen-Fu Chen (Jecision Digital Co., Ltd., New Taipei City, Taiwan)
 
