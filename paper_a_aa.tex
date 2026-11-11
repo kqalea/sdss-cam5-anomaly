@@ -5,6 +5,8 @@
 \bibpunct{(}{)}{;}{a}{}{,}
 \usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
 
+\newcommand{\toofew}{\texttt{TOO\_\allowbreak FEW\_\allowbreak GOOD\_\allowbreak DETECTIONS}}
+
 \begin{document}
 
 \title{A camera-column dependence in SDSS handedness measurements: localization, calibration, and a conditional null}
@@ -22,7 +24,7 @@
   {The claimed handedness asymmetry of Sloan Digital Sky Survey (SDSS) spiral galaxies has been debated for fifteen years, with reported amplitudes spanning a 33-fold range, 0.006 to 0.20.}
   {We aim to isolate the instrumental and selection transfer function between the sky and the catalogue, and to test whether the signal originates from survey hardware rather than from the galaxies.}
   {We measure the handedness of 26,727 unique SDSS DR18 galaxies in two disjoint sky samples with a single shape-blind pixel operator, the circular m=2 Fourier phase gradient, on clean cutouts without coordinate-grid overlays. We stratify the measurements by camera column, pipeline detection flag, colour channel, and raw r-band FITS frames.}
-  {The full-sample amplitude (+0.0214 +/- 0.0061) is carried by a single camera column: camcol 5 gives +0.1209 against -0.0063 in the other five columns (a 7.0 sigma contrast; 3.3 sigma against the empirical inter-column scatter), and the excess is concentrated in galaxies flagged TOO\_FEW\_GOOD\_DETECTIONS (+0.1787 against -0.0301). Well-detected galaxies show no column difference and no significant net amplitude (+0.0071 +/- 0.0112). Treating each column as an instrument with its own zero point, we measure the camcol-5 band-poor offset at about +0.20 as a function of detection quality and radius; after correction the sample amplitude is -0.0116 +/- 0.017, consistent with zero. Colour-channel decomposition (6.6 sigma in the r channel) and raw r-band frame measurements (+0.391 +/- 0.156 on a 159-galaxy pilot) localize the anomaly to extended-source imaging in the r-band detector of camera column 5.}
+  {The full-sample amplitude (+0.0214 +/- 0.0061) is carried by a single camera column: camcol 5 gives +0.1209 against -0.0063 in the other five columns (a 7.0 sigma contrast; 3.3 sigma against the empirical inter-column scatter), and the excess is concentrated in galaxies flagged \toofew (+0.1787 against -0.0301). Well-detected galaxies show no column difference and no significant net amplitude (+0.0071 +/- 0.0112). Treating each column as an instrument with its own zero point, we measure the camcol-5 band-poor offset at about +0.20 as a function of detection quality and radius; after correction the sample amplitude is -0.0116 +/- 0.017, consistent with zero. Colour-channel decomposition (6.6 sigma in the r channel) and raw r-band frame measurements (+0.391 +/- 0.156 on a 159-galaxy pilot) localize the anomaly to extended-source imaging in the r-band detector of camera column 5.}
   {Under the instrumental interpretation, the debated SDSS handedness asymmetry appears only where the detection is poor and only in one camera column, a regime that bright volunteer-classified samples such as Galaxy Zoo naturally exclude. We release the calibration table and a complete replication package so that future measurements are not dominated by this detector offset.}
 
 \keywords{methods: data analysis -- techniques: image processing -- surveys -- galaxies: general -- galaxies: spiral -- large-scale structure of Universe}
@@ -73,7 +75,7 @@ carried almost entirely by one of the six SDSS camera columns: camcol 5 gives $+
 galaxies ($7.0\sigma$ contrast; $7.4\sigma$ from zero), while the other five give a
 pooled mean of $-0.0063$. A camera column is a hardware and pipeline unit, not an astrophysical
 one, so the excess demands an explanation in the survey, not in the sky. Second, the excess is
-confined to galaxies flagged \texttt{TOO\_FEW\_GOOD\_DETECTIONS}: within that subset camcol 5 gives
+confined to galaxies flagged \toofew: within that subset camcol 5 gives
 $+0.1787$ against $-0.0301$ in the other five columns, and the well-detected objects show no
 column difference and $+0.0071 \pm 0.0112$. Third, the five non-camcol-5 columns provide a reference:
 the camcol-5 band-poor offset is measured at about $+0.20$ as a function of detection quality and
@@ -200,7 +202,7 @@ belong in the paper.
 
 \subsection{The detection selection}
 In the 15,456-galaxy independent-sky sample, the camcol-5 subset contains 57.1 per cent of objects
-flagged \texttt{TOO\_FEW\_GOOD\_DETECTIONS} (1,919 of 3,358 galaxies) against 44.3 per cent
+flagged \toofew (1,919 of 3,358 galaxies) against 44.3 per cent
 elsewhere, and the excess is concentrated in that band-poor subset (the unflagged camcol-5
 residual is $+0.0327 \pm 0.026$) (Table~\ref{tab:flags} and
 Fig.~\ref{fig:flags}).
@@ -327,7 +329,7 @@ same selection that keeps those objects out of volunteer, classification and tra
 
 \paragraph{The open question.} Channel decomposition and raw FITS measurements localize the excess
 to extended-source imaging in a single detector ($r_5$), while excluding the stellar PSF, the JPEG
-compression and cross-band registration. Why the \texttt{TOO\_FEW\_GOOD\_DETECTIONS} regime amplifies
+compression and cross-band registration. Why the \toofew regime amplifies
 the phase gradient specifically within the $r_5$ detector, whether through a threshold-entry
 selection bias or a sub-pixel charge-transfer or readout asymmetry at low surface brightness, is not
 resolved by the survey products alone.
@@ -336,7 +338,7 @@ resolved by the survey products alone.
 \begin{enumerate}
 \item One operator, two disjoint sky samples, 26,727 galaxies, no coordinate grid.
 \item The handedness amplitude is carried by one camera column ($+0.1209$ against $-0.0063$), and
-the excess is confined to galaxies flagged \texttt{TOO\_FEW\_GOOD\_DETECTIONS}.
+the excess is confined to galaxies flagged \toofew.
 \item The well-detected galaxies show no column difference and no net amplitude
 ($+0.0071 \pm 0.0112$): the apparent signal is not present where the measurement is reliable.
 \item The column offsets are calibrated as a function of detection quality and size; the camcol-5

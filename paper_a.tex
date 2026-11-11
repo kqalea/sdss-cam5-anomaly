@@ -18,6 +18,8 @@
 \small \texttt{dev@jecision.com}}
 \date{\today}
 
+\newcommand{\toofew}{\texttt{TOO\_\allowbreak FEW\_\allowbreak GOOD\_\allowbreak DETECTIONS}}
+
 \begin{document}
 \maketitle
 
@@ -27,7 +29,7 @@ localize the apparent signal to one camera column.
 Measuring 26,727 unique galaxies with one operator, in two disjoint sky samples and without the
 coordinate-grid overlay, the amplitude is carried by camcol 5 ($+0.1209$ against
 $-0.0063$ in the other five columns), and the excess lives in galaxies flagged
-TOO\_FEW\_GOOD\_DETECTIONS ($+0.1787$ against $-0.0301$). The well-detected galaxies, where the
+\toofew ($+0.1787$ against $-0.0301$). The well-detected galaxies, where the
 measurement is reliable, show no column difference and no significant net amplitude ($+0.0071 \pm 0.0112$). We
 treat the column as an instrument with its own zero point: the other five columns give the
 reference, the camcol-5 band-poor offset is measured at about $+0.20$ as a function of detection
@@ -83,7 +85,7 @@ carried almost entirely by one of the six SDSS camera columns: camcol 5 gives $+
 galaxies ($7.0\sigma$ contrast; $7.4\sigma$ from zero), while the other five give a
 pooled mean of $-0.0063$. A camera column is a hardware and pipeline unit, not an astrophysical
 one, so the excess demands an explanation in the survey, not in the sky. Second, the excess is
-confined to galaxies flagged \texttt{TOO\_FEW\_GOOD\_DETECTIONS}: within that subset camcol 5 gives
+confined to galaxies flagged \toofew: within that subset camcol 5 gives
 $+0.1787$ against $-0.0301$ in the other five columns, and the well-detected objects show no
 column difference and $+0.0071 \pm 0.0112$. Third, the five non-camcol-5 columns provide a reference:
 the camcol-5 band-poor offset is measured at about $+0.20$ as a function of detection quality and
@@ -210,7 +212,7 @@ belong in the paper.
 
 \subsection{The detection selection}
 In the 15,456-galaxy independent-sky sample, the camcol-5 subset contains 57.1 per cent of objects
-flagged \texttt{TOO\_FEW\_GOOD\_DETECTIONS} (1,919 of 3,358 galaxies) against 44.3 per cent
+flagged \toofew (1,919 of 3,358 galaxies) against 44.3 per cent
 elsewhere, and the excess is concentrated in that band-poor subset (the unflagged camcol-5
 residual is $+0.0327 \pm 0.026$) (Table~\ref{tab:flags} and
 Fig.~\ref{fig:flags}).
@@ -337,7 +339,7 @@ same selection that keeps those objects out of volunteer, classification and tra
 
 \paragraph{The open question.} Channel decomposition and raw FITS measurements localize the excess
 to extended-source imaging in a single detector ($r_5$), while excluding the stellar PSF, the JPEG
-compression and cross-band registration. Why the \texttt{TOO\_FEW\_GOOD\_DETECTIONS} regime amplifies
+compression and cross-band registration. Why the \toofew regime amplifies
 the phase gradient specifically within the $r_5$ detector, whether through a threshold-entry
 selection bias or a sub-pixel charge-transfer or readout asymmetry at low surface brightness, is not
 resolved by the survey products alone.
@@ -346,7 +348,7 @@ resolved by the survey products alone.
 \begin{enumerate}
 \item One operator, two disjoint sky samples, 26,727 galaxies, no coordinate grid.
 \item The handedness amplitude is carried by one camera column ($+0.1209$ against $-0.0063$), and
-the excess is confined to galaxies flagged \texttt{TOO\_FEW\_GOOD\_DETECTIONS}.
+the excess is confined to galaxies flagged \toofew.
 \item The well-detected galaxies show no column difference and no net amplitude
 ($+0.0071 \pm 0.0112$): the apparent signal is not present where the measurement is reliable.
 \item The column offsets are calibrated as a function of detection quality and size; the camcol-5
