@@ -30,8 +30,7 @@ galaxies flagged TOO\_FEW\_GOOD\_DETECTIONS (+0.1787 against $-0.0301$). Well-de
 no column difference and no significant net amplitude (+0.0071 $\pm$ 0.0112). Treating each column
 as an instrument with its own zero point, we measure the camcol-5 band-poor offset at about +0.20 as
 a function of detection quality and radius; after correction the sample amplitude is
-$-0.0116 \pm 0.017$, consistent with zero. Colour-channel decomposition (6.6$\sigma$ in the r
-channel) and raw r-band frame measurements (+0.391 $\pm$ 0.156 on a 159-galaxy pilot) localize the
+$-0.0116 \pm 0.017$, consistent with zero. Colour-channel decomposition (6.6$\sigma$ in the G channel, i.e. the r band) and raw r-band frame measurements (+0.391 $\pm$ 0.156 on a 159-galaxy pilot) localize the
 anomaly to extended-source imaging in the r-band detector of camera column 5, a regime that bright
 volunteer-classified samples such as Galaxy Zoo naturally exclude. The calibration table and a
 complete replication package are released.
@@ -53,7 +52,7 @@ effect is expected to be small, the measurement is qualitative, and every step b
 primordial field and a pixel in a survey image can introduce a preference of its own.
 
 The observational history is a study in that difficulty. An excess of anticlockwise over clockwise
-spirals in the Sloan Digital Sky Survey (SDSS) was reported by Longo \citep{longo2011} and
+spirals in the Sloan Digital Sky Survey (SDSS) was reported by \citet{longo2011} and
 developed into a series of claims of a preferred axis and a redshift evolution
 \citep{shamir2012, shamir2017, shamir2024}. Countervailing analyses found that the signal responds
 to the mirror symmetry of the classification, to the sample selection, and to the imaging pipeline
@@ -84,7 +83,7 @@ pixels.
 
 Three findings emerge. First, the whole sample gives $A = +0.0214 \pm 0.0061$, and the amplitude is
 carried almost entirely by one of the six SDSS camera columns: camcol 5 gives $+0.1209$ over 5,815
-galaxies ($7.4\sigma$ jackknife, $6.8\sigma$ on the independent sky), while the other five give a
+galaxies ($7.0\sigma$ contrast; $7.4\sigma$ from zero), while the other five give a
 pooled mean of $-0.0063$. A camera column is a hardware and pipeline unit, not an astrophysical
 one, so the excess demands an explanation in the survey, not in the sky. Second, the excess is
 confined to galaxies flagged \texttt{TOO\_FEW\_GOOD\_DETECTIONS}: within that subset camcol 5 gives
@@ -125,7 +124,7 @@ Cutouts are $128 \times 128$ pixels at $0.396$ arcsec per pixel, a 50.7 arcsec f
 the SkyServer \texttt{ImgCutout} service. The sampling radius is
 $r_k = \mathrm{clip}(\mathrm{petroRad}_r/0.396, 6, 60)$ pixels.
 
-\paragraph{No coordinate grid.} The SkyServer \texttt{opt} parameter does not select a band or a
+\paragraph{No coordinate grid} The SkyServer \texttt{opt} parameter does not select a band or a
 rendering mode: \texttt{opt=G} draws a coordinate grid on the image. The initial fetch included
 this parameter and a clean refetch removed it; the difference is not cosmetic: the grid changes
 10.8 per cent of the signs, the sign agreement between the two renderings is 0.892, and the
@@ -161,17 +160,17 @@ asymmetry into the measured one.
 
 \section{Null tests}
 
-\paragraph{Repeat observations.} SDSS images the same sky in adjacent runs. Matching positions
+\paragraph{Repeat observations} SDSS images the same sky in adjacent runs. Matching positions
 within 1.2 arcsec yields 21,464 pairs in the full measurement; the two measurements agree 0.845 of
 the time for camcol 5 and 0.855 outside it. In an auxiliary bright test catalogue of 36,000 raw cutouts the agreement is 0.931 over
 17,347 pairs. This baseline uses the raw (pre-clean) signs; every other number in this paper uses
 the clean cutouts.
 
-\paragraph{Volunteer classifications.} A Galaxy Zoo sample in the same sky \citep{lintott2008, masters2021} (9,986 volunteer labels; 8,891 with an operator measurement) gives the volunteer-label amplitude $-0.027$ ($2.6\sigma$); our operator on those images gives $-0.004$. The
+\paragraph{Volunteer classifications} A Galaxy Zoo sample in the same sky \citep{lintott2008, masters2021} (9,986 volunteer labels; 8,891 with an operator measurement) gives the volunteer-label amplitude $-0.027$ ($2.6\sigma$); our operator on those images gives $-0.004$. The
 operator reproduces the volunteer labels on the bright sample at 0.664 to 0.72 depending on the
 sampling radius.
 
-\paragraph{Reflection and rotation.} A reflected image returns the opposite sign and a rotated
+\paragraph{Reflection and rotation} A reflected image returns the opposite sign and a rotated
 image the same sign; the test is run on every batch.
 
 \section{Results}
@@ -314,7 +313,7 @@ amplifiers ($+0.166$ on amplifier 0, $+0.245$ on amplifier 1); the central 1000-
 $+0.342$ but contains only 55 objects, so the test does not localize the effect to the central
 bad-column group.
 
-\paragraph{Band and detector localization.} To distinguish cross-band registration in the three-band
+\paragraph{Band and detector localization} To distinguish cross-band registration in the three-band
 rendering from a single detector, the clean cutouts are decomposed into colour channels over 1,000
 matched \texttt{flag = 1} pairs. The contrast is absent in the B channel ($g$ band, $-0.005 \pm 0.044$),
 marginal in R ($i$ band, $+0.088 \pm 0.045$, $2.0\sigma$), and carried by the G channel ($r$ band:
@@ -331,16 +330,15 @@ localized to extended-source imaging in the r-band detector of camera column 5 (
 PSF, to the JPEG rendering or to cross-band registration.
 
 \section{Discussion}
-\paragraph{The published amplitude spread.} A sample that includes band-poor detections from a
+\paragraph{The published amplitude spread} A sample that includes band-poor detections from a
 camera column with a detection-related offset reports an inflated positive amplitude; a bright,
-resolved selection excludes that regime by construction and recovers a near-zero monopole. The two
-orders of magnitude separating the published values are consistent with differences in selection,
+resolved selection excludes that regime by construction and recovers a near-zero monopole. The 33-fold range separating the published values are consistent with differences in selection,
 before any question about the sky is asked.
 
-\paragraph{Why the field missed it.} The selection that creates the excess, poor detection, is the
+\paragraph{Why the field missed it} The selection that creates the excess, poor detection, is the
 same selection that keeps those objects out of volunteer, classification and training samples.
 
-\paragraph{The open question.} Channel decomposition and raw FITS measurements localize the excess
+\paragraph{The open question} Channel decomposition and raw FITS measurements localize the excess
 to extended-source imaging in a single detector ($r_5$), while excluding the stellar PSF, the JPEG
 compression and cross-band registration. Why the \texttt{TOO\_FEW\_GOOD\_DETECTIONS} regime amplifies
 the phase gradient specifically within the $r_5$ detector, whether through a threshold-entry
@@ -419,6 +417,7 @@ the column calibration and the corrected amplitude, \texttt{make test} runs the 
 \texttt{make figures} regenerates the figures. The package is available from the public repository \url{https://github.com/kqalea/sdss-cam5-anomaly}
 and is archived on Zenodo at \href{https://doi.org/10.5281/zenodo.24112428}{doi:10.5281/zenodo.24112428}.
 
+\clearpage
 \begin{thebibliography}{99}
 \bibitem[Hayes et al.(2017)]{hayes2017} Hayes, W. B., Davis, D., \& Silva, P. 2017, MNRAS, 466, 3928. DOI: 10.1093/mnras/stw3290.
 \bibitem[Iye et al.(2020)]{iye2020} Iye, M., et al. 2020, MNRAS, 496, 4276.
@@ -430,7 +429,7 @@ and is archived on Zenodo at \href{https://doi.org/10.5281/zenodo.24112428}{doi:
 \bibitem[Almeida et al.(2023)]{sdssdr18} Almeida, A., et al. 2023, ApJS, 267, 44.
 \bibitem[Lintott et al.(2008)]{lintott2008} Lintott, C. J., et al. 2008, MNRAS, 389, 1179.
 \bibitem[Masters et al.(2021)]{masters2021} Masters, K. L., et al. 2021, MNRAS, 507, 4389.
-\bibitem[DESI chirality release(2026)]{desi2026} An observed-label chirality-dipole null in 949,584 high-confidence DESI spirals and an 8.5-million-galaxy catalogue. Zenodo 21461899.
+\bibitem[Chen(2026)]{desi2026} Chen, Y.-F. 2026, An observed-label chirality-dipole null in 949,584 high-confidence DESI spirals and an 8.5-million-galaxy catalogue. Zenodo 21461899.
 \end{thebibliography}
 
 \end{document}\end{document}
