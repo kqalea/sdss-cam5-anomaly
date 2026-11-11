@@ -1,0 +1,437 @@
+\documentclass[preprint,12pt,authoryear]{elsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+
+\journal{Astronomy and Computing}
+
+\begin{document}
+
+\begin{frontmatter}
+
+\title{A camera-column dependence in SDSS handedness measurements: localization, calibration and a conditional null}
+
+\author[1]{Yen-Fu Chen\corref{cor1}}
+\ead{dev@jecision.com}
+\cortext[cor1]{Corresponding author.}
+
+\affiliation[1]{organization={Jecision Digital Co., Ltd.}, city={New Taipei City}, country={Taiwan}}
+
+\begin{abstract}
+The claimed handedness asymmetry of Sloan Digital Sky Survey (SDSS) spiral galaxies has been
+debated for fifteen years, with reported amplitudes spanning a 33-fold range, 0.006 to 0.20. We
+measure the handedness of 26,727 unique SDSS DR18 galaxies in two disjoint sky samples with a single
+shape-blind pixel operator, the circular m=2 Fourier phase gradient, on clean cutouts without
+coordinate-grid overlays. The full-sample amplitude (+0.0214 $\pm$ 0.0061) is carried by a single
+camera column: camcol 5 gives +0.1209 against $-0.0063$ in the other five columns (a 7.0$\sigma$
+contrast; 3.3$\sigma$ against the empirical inter-column scatter), and the excess is concentrated in
+galaxies flagged TOO\_FEW\_GOOD\_DETECTIONS (+0.1787 against $-0.0301$). Well-detected galaxies show
+no column difference and no significant net amplitude (+0.0071 $\pm$ 0.0112). Treating each column
+as an instrument with its own zero point, we measure the camcol-5 band-poor offset at about +0.20 as
+a function of detection quality and radius; after correction the sample amplitude is
+$-0.0116 \pm 0.017$, consistent with zero. Colour-channel decomposition (6.6$\sigma$ in the r
+channel) and raw r-band frame measurements (+0.391 $\pm$ 0.156 on a 159-galaxy pilot) localize the
+anomaly to extended-source imaging in the r-band detector of camera column 5, a regime that bright
+volunteer-classified samples such as Galaxy Zoo naturally exclude. The calibration table and a
+complete replication package are released.
+\end{abstract}
+
+\begin{keyword}
+chirality \sep galaxy spins \sep SDSS \sep systematics \sep calibration \sep replication
+\end{keyword}
+
+\end{frontmatter}
+
+\section{Introduction}
+
+A net handedness in the spins of galaxies is one of the few observables that would connect the
+large-scale geometry of the Universe to the physics of structure formation. If galaxies inherit a
+preferred sense of rotation from a primordial vorticity field, the excess of one winding over the
+other is a direct fossil of that field. The claim is simple to state and hard to establish: the
+effect is expected to be small, the measurement is qualitative, and every step between the
+primordial field and a pixel in a survey image can introduce a preference of its own.
+
+The observational history is a study in that difficulty. An excess of anticlockwise over clockwise
+spirals in the Sloan Digital Sky Survey (SDSS) was reported by Longo \citep{longo2011} and
+developed into a series of claims of a preferred axis and a redshift evolution
+\citep{shamir2012, shamir2017, shamir2024}. Countervailing analyses found that the signal responds
+to the mirror symmetry of the classification, to the sample selection, and to the imaging pipeline
+\citep{land2008, hayes2017, iye2020}. The reported amplitudes span a 33-fold range, from
+about $0.006$ to $0.20$, and the disagreement is not about the sign of the effect but about which
+samples and which pipelines are believed. Catalogue-based analyses of large wide-field samples have
+similarly found no dipole and a monopole at the $10^{-3}$ level attributable to imaging systematics
+or sky structure \citep{desi2026}. The field has reached a stalemate in which each side can point to a sample in
+which its number appears.
+
+The stalemate is not a disagreement about galaxies. It is a disagreement about the transfer
+function between the sky and the catalogue. Five steps lie between the intrinsic handedness of a
+disc and the number that enters a paper: the inheritance of angular momentum from the halo; the
+fraction of galaxies whose spiral structure is resolved and cold enough to measure; the mapping of
+that structure onto the pixels of a particular image; the reduction of the image to a sign by a
+particular operator; and the selection that decides which galaxies enter the catalogue at all.
+Published amplitudes differ because published samples differ in these five steps, and almost never
+because the sky differs. A measurement that wants to settle the question must therefore be built
+to separate the steps, not to add one more amplitude to the list.
+
+This paper reports such a measurement, and its result is not the amplitude it was looking for. We
+measure the handedness of 26,727 unique SDSS galaxies with a single operator, in two independent
+sky samples, at a fixed pixel scale, and with a fixed sampling radius. The operator is the
+circular $m=2$ phase gradient: the image is averaged in annuli, the azimuthal mean is removed, the
+phase of the $m=2$ Fourier mode is followed with radius, and the sign of its gradient is the
+handedness. The measurement is intentionally blind to the shape of the galaxy; it uses only the
+pixels.
+
+Three findings emerge. First, the whole sample gives $A = +0.0214 \pm 0.0061$, and the amplitude is
+carried almost entirely by one of the six SDSS camera columns: camcol 5 gives $+0.1209$ over 5,815
+galaxies ($7.4\sigma$ jackknife, $6.8\sigma$ on the independent sky), while the other five give a
+pooled mean of $-0.0063$. A camera column is a hardware and pipeline unit, not an astrophysical
+one, so the excess demands an explanation in the survey, not in the sky. Second, the excess is
+confined to galaxies flagged \texttt{TOO\_FEW\_GOOD\_DETECTIONS}: within that subset camcol 5 gives
+$+0.1787$ against $-0.0301$ in the other five columns, and the well-detected objects show no
+column difference and $+0.0071 \pm 0.0112$. Third, the five non-camcol-5 columns provide a reference:
+the camcol-5 band-poor offset is measured at about $+0.20$ as a function of detection quality and
+size, and after the correction the sample amplitude is $-0.0116 \pm 0.017$, consistent with zero.
+
+The result has a corollary that explains why the question has stayed open. The selection that
+creates the excess, poor detection, is the same selection that keeps those objects out of the
+bright, resolved samples on which every volunteer classification and every training set is built.
+Of the 1,919 camcol-5 band-poor galaxies in our independent-sky sample, none appears in the Galaxy
+Zoo sample. A defect confined to poorly detected objects is invisible to every human-labelled
+catalogue by construction, and it will be invisible to a classifier trained on one.
+
+The paper is organised as follows. Section 2 describes the data and the two sky samples. Section 3
+defines the operator and its validation. Section 4 presents the null tests. Section 5 gives the
+results. Section 6 collects the systematic tests. Section 7 discusses the implications, and
+Section 8 concludes.
+
+\section{Data}
+
+The galaxies are drawn from the SDSS DR18 \texttt{PhotoObj} table with \texttt{type = 3},
+\texttt{modelMag\_r < 16.5} and \texttt{petroRad\_r > 4} arcsec. Two samples are used. The first
+consists of 72 RA strips of 5 degrees with \texttt{TOP 500} per strip. The second is an independent
+sky: 72 strips shifted by half a strip width, \texttt{TOP 700} per strip, with every position
+within 2 arcsec of the first sample dropped before the cutouts are fetched. The strip query has no
+\texttt{ORDER BY}; the rows are grouped by position before use.
+
+Rows are not galaxies. Because SDSS images the same sky in overlapping runs, the same physical
+galaxy enters the catalogue several times at slightly different positions. Deleting duplicates is
+part of the measurement, not bookkeeping. Duplicates are merged by single linkage at 1.2 arcsec. On
+the clean grid-free cutouts, the first sample contains 11,271 unique galaxies and the second
+contains 15,456 unique galaxies, yielding a combined catalogue of 26,727 unique galaxies
+(Fig.~\ref{fig:sky}, left panel).
+
+Cutouts are $128 \times 128$ pixels at $0.396$ arcsec per pixel, a 50.7 arcsec field, fetched from
+the SkyServer \texttt{ImgCutout} service. The sampling radius is
+$r_k = \mathrm{clip}(\mathrm{petroRad}_r/0.396, 6, 60)$ pixels.
+
+\paragraph{No coordinate grid.} The SkyServer \texttt{opt} parameter does not select a band or a
+rendering mode: \texttt{opt=G} draws a coordinate grid on the image. The initial fetch included
+this parameter and a clean refetch removed it; the difference is not cosmetic: the grid changes
+10.8 per cent of the signs, the sign agreement between the two renderings is 0.892, and the
+camcol-5 amplitude falls from $+0.1391$ to $+0.1209$ on the clean images. Every number quoted in
+this work uses the clean cutouts.
+
+The six camera columns do not contain equal numbers of galaxies: camcol 5 has 5,815 and the others
+between 3,891 and 4,476 (Fig.~\ref{fig:sky}, right panel). The cause is the column-major ordering
+of the \texttt{objid} field against the \texttt{TOP} cut of the strip query, which over-represents
+camcol 5 by about 30 per cent. Equalising the columns by random subsampling to 3,891 galaxies each
+leaves the camcol-5 amplitude unchanged ($+0.117$, $+0.128$, $+0.128$ in three draws), so the
+excess is not driven by the count.
+
+\section{The operator}
+
+The handedness is measured by the circular $m=2$ phase gradient. For each galaxy the cutout is
+sampled in annuli from 1 to $r_k$ pixels; the azimuthal mean is removed at every radius; the $m=2$
+Fourier coefficients are computed in each annulus; the phase of the mode is followed with $\ln r$
+after unwrapping its $\pi$ ambiguity, and the sign of the least-squares gradient against $\ln r$ is
+the handedness. The RGB cutout is reduced to its luminance (ITU-R 601) before the measurement. An
+amplitude signal-to-noise of 5 is required, defined as the fitted $m=2$ amplitude divided by its
+standard error. The operator takes no shape input: it never uses the axis ratio, the position angle or
+the shape model, only the pixels. This is deliberate. A shape-based operator measures the shape
+model, and the shape model is itself a product of the pipeline whose selection effects this paper
+is trying to expose.
+
+Three checks fix the operator. (i) Rotation of the image preserves the sign and reflection reverses
+it, which is the defining property of a chirality measure; both are unit-tested. (ii) The same
+galaxies measured at 0.2 arcsec per pixel agree with the 0.396 arcsec measurement at 91.2 per cent.
+(iii) On a sample of 254 galaxies with visual classifications, the attenuation of the operator
+relative to the visual sample is 0.31 to 0.37; this is the factor that converts an intrinsic
+asymmetry into the measured one.
+
+\section{Null tests}
+
+\paragraph{Repeat observations.} SDSS images the same sky in adjacent runs. Matching positions
+within 1.2 arcsec yields 21,464 pairs in the full measurement; the two measurements agree 0.845 of
+the time for camcol 5 and 0.855 outside it. In an auxiliary bright test catalogue of 36,000 raw cutouts the agreement is 0.931 over
+17,347 pairs. This baseline uses the raw (pre-clean) signs; every other number in this paper uses
+the clean cutouts.
+
+\paragraph{Volunteer classifications.} A Galaxy Zoo sample in the same sky \citep{lintott2008, masters2021} (9,986 volunteer labels; 8,891 with an operator measurement) gives the volunteer-label amplitude $-0.027$ ($2.6\sigma$); our operator on those images gives $-0.004$. The
+operator reproduces the volunteer labels on the bright sample at 0.664 to 0.72 depending on the
+sampling radius.
+
+\paragraph{Reflection and rotation.} A reflected image returns the opposite sign and a rotated
+image the same sign; the test is run on every batch.
+
+\section{Results}
+
+\subsection{The amplitude against sample size}
+On the clean cutouts, the discovery sky gives $A = +0.0294$ over 11,271 galaxies ($3.1\sigma$) and
+the independent sky gives $+0.0155$ over 15,456 galaxies ($1.9\sigma$); the combined catalogue of
+26,727 galaxies gives $A = +0.0214 \pm 0.0061$ (binomial; the sky-cell jackknife gives 0.0075,
+$2.8\sigma$).
+
+\subsection{The camera column}
+The amplitude is carried by one column (Table~\ref{tab:columns} and Fig.~\ref{fig:columns}).
+
+\begin{table}[h]
+\centering
+\caption{Per-column amplitude across the combined sample ($N = 26,727$).}
+\label{tab:columns}
+\begin{tabular}{rrrr}
+\toprule
+camcol & $N$ & $A$ & jackknife $\sigma$ \\
+\midrule
+1 & 4,476 & $+0.0018$ & 0.0162 \\
+2 & 4,375 & $-0.0487$ & 0.0177 \\
+3 & 4,128 & $-0.0334$ & 0.0163 \\
+4 & 4,042 & $+0.0079$ & 0.0162 \\
+5 & 5,815 & $+0.1209$ & 0.0164 \\
+6 & 3,891 & $+0.0460$ & 0.0181 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The five other columns have a galaxy-weighted pooled mean of $-0.0063 \pm 0.0080$ ($N = 20,912$)
+and an unweighted column mean of $-0.0053$, scattering with $\chi^2 = 17.9$ for four degrees of
+freedom (an empirical column-to-column scatter of about 0.04, larger than the single-column
+jackknife error). Against the mean of the other five columns, camcol 5 is $7.0\sigma$ using the
+jackknife errors ($7.4\sigma$ from zero alone, and $6.8\sigma$ from zero on the independent sky,
+where camcol 5 gives $+0.1161 \pm 0.0171$ over 3,358 galaxies) and $3.3\sigma$ using the empirical
+column scatter. Both numbers
+belong in the paper.
+
+\subsection{The detection selection}
+In the 15,456-galaxy independent-sky sample, the camcol-5 subset contains 57.1 per cent of objects
+flagged \texttt{TOO\_FEW\_GOOD\_DETECTIONS} (1,919 of 3,358 galaxies) against 44.3 per cent
+elsewhere, and the excess is concentrated in that band-poor subset (the unflagged camcol-5
+residual is $+0.0327 \pm 0.026$) (Table~\ref{tab:flags} and
+Fig.~\ref{fig:flags}).
+
+\begin{table}[h]
+\centering
+\caption{The detection-selection split (independent-sky sample, $N = 15,456$).}
+\label{tab:flags}
+\begin{tabular}{lrrr}
+\toprule
+subset & $N$ & $A$ cam5 & $A$ other five \\
+\midrule
+\texttt{flag = 0} (good detections) & 8,182 & $+0.0327$ & $+0.0016$ \\
+\texttt{flag = 1} (band-poor) & 7,274 & $+0.1787$ & $-0.0301$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The flag is not a uniform amplifier: per column in \texttt{flag = 1} the amplitudes are $-0.029$,
+$-0.077$, $-0.033$, $-0.062$, $+0.179$, $+0.058$ (Fig.~\ref{fig:flags}). Only camcol 5 is large and
+positive. Both halves of camcol 5 are positive; if the flag merely moved positive galaxies from one
+half to the other, the unflagged half would be about $-0.19$. It is not, so the mechanism is either
+an entry effect across the signal-to-noise threshold or a distortion of the measurement in the
+flagged images. The SDSS data alone cannot distinguish the two; this is reported as an open
+question.
+
+\subsection{The well-detected subset}
+In the good-detection subset (\texttt{flag = 0}, $N = 8,182$), the six columns are $+0.026$,
+$-0.020$, $-0.026$, $+0.011$, $+0.033$, $+0.022$, consistent within $\pm 0.03$
+(Fig.~\ref{fig:clean_model}), and the overall amplitude is
+\begin{equation}
+A = +0.0071 \pm 0.0112 \qquad (0.63\,\sigma).
+\end{equation}
+At two sigma this excludes $|A| > 0.030$ for this operator in this subset. After the 0.31 to 0.37
+operator dilution of Section 3 it corresponds to an intrinsic sky asymmetry below about 0.08 to
+0.10. It is consistent with
+zero; it is a bound, not a detection.
+
+\subsection{The column calibration}
+The five non-camcol-5 columns provide the reference. The offset is measured per column, per detection flag, and in three sampling-radius bins (edges at
+the terciles of $r_k$), with the per-cell binomial error (Table~\ref{tab:calib}).
+
+\begin{table}[htbp]
+\centering
+\caption{Per-column offset relative to the five-column reference, \texttt{flag = 1}, in the three size bins,
+with the per-cell binomial error.}
+\label{tab:calib}
+\begin{tabular}{lrrr}
+\toprule
+cam & small & middle & large \\
+\midrule
+1 & $+0.013 \pm 0.038$ & $+0.017 \pm 0.071$ & $-0.032 \pm 0.050$ \\
+2 & $-0.038 \pm 0.050$ & $+0.022 \pm 0.068$ & $-0.114 \pm 0.051$ \\
+3 & $-0.018 \pm 0.042$ & $+0.141 \pm 0.065$ & $-0.093 \pm 0.058$ \\
+4 & $-0.024 \pm 0.043$ & $-0.126 \pm 0.064$ & $+0.037 \pm 0.061$ \\
+5 & $+0.266 \pm 0.034$ & $+0.229 \pm 0.048$ & $+0.114 \pm 0.038$ \\
+6 & $+0.067 \pm 0.045$ & $-0.053 \pm 0.081$ & $+0.200 \pm 0.058$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\noindent The flag = 0 cells used in the same correction are not uniformly positive for camcol 5:
+$-0.063 \pm 0.059$, $+0.003 \pm 0.039$ and $+0.118 \pm 0.045$ in the small, middle and large bins;
+the offset is therefore a band-poor phenomenon.
+
+The camcol-5 band-poor cells are consistently positive; the fifteen non-camcol-5 cells scatter at
+1.3 to 2.1 times their nominal errors ($\chi^2 = 32.7$ for 14 degrees of freedom, $p = 0.003$), so
+the reference is itself not clean. Applying the offset to each galaxy leaves a sample amplitude of
+$\mathbf{-0.0116 \pm 0.017}$ on the 15,456-galaxy sample, where the statistical error (0.0089, a
+300-draw bootstrap) is combined in quadrature with the intrinsic between-column SEM (0.0149); the 95 per cent interval is $[-0.046, +0.023]$. The corrected amplitude is the
+sample-weighted mean of the five-column reference: the camcol-5 galaxies contribute weight but not
+sign information, so the effective sign-information sample is 12,098 galaxies and the null is
+conditional on the instrumental interpretation. The in-sample correction is not independent: the offsets are
+estimated from the same galaxies that are then corrected. We therefore validate it out of sample:
+the independent-sky sample is split in two halves by RA, the offsets are estimated on one half and
+applied to the other, giving $-0.0034 \pm 0.0116$ and $-0.0215 \pm 0.0117$, both consistent with
+zero. The numbers are frozen in data/SDSS\_RESULT.json. The correction is a zero-point adjustment;
+it does not change the per-galaxy signs.
+
+\section{Systematics}
+Each test below excludes one explanation of the column offset. The coordinate grid changes 10.8 per
+cent of signs (camcol 5 falls 0.1391 to 0.1209). Run and night are excluded by the within-run contrast between camcol 5 and the other columns of the
+same run ($+0.1453 \pm 0.0285$, $5.1\sigma$; removing run means leaves $+0.1189$). The six strips of a
+run are about 13 arcmin apart, so sky structure below that scale is largely common and cancels in
+the contrast; structure on larger scales does not. Inclination is matched by \texttt{expAB\_r} (medians
+0.569 against 0.566), although the effect is stronger in face-on galaxies and this test is
+therefore weak. The recorded selection is matched on magnitude, $r_k$, S/N, Dec and RA, giving a
+contrast of $+0.115 \pm 0.028$ ($4.1\sigma$, grid signs) and $+0.165 \pm 0.046$ ($3.6\sigma$) in the
+four-quantile version. Frame attribution through the SAS WCS reproduces the cutout sign at 0.90.
+The sample over-representation is removed by equalising the columns. The injection test (300 injections per group; Fig.~\ref{fig:injection}) recovers the injected
+winding at 0.86 in the camcol-5 band-poor group, 0.85 elsewhere in flag = 1, 0.77 in the camcol-5
+well-detected group and 0.73 elsewhere, with no significant difference between the $+k$ and $-k$
+injections (largest group asymmetry 0.04); a positive sign-recovery bias above about 0.06 is
+excluded at 95 per cent for the camcol-5 band-poor group. The photometric scale (a global gain) and the JPEG quantisation (recompression from q90 to
+q40) leave the measured amplitude unchanged. The CCD column coordinate is also tested: the camcol-5 band-poor offset is present on both
+amplifiers ($+0.166$ on amplifier 0, $+0.245$ on amplifier 1); the central 1000-1050 band gives
+$+0.342$ but contains only 55 objects, so the test does not localize the effect to the central
+bad-column group.
+
+\paragraph{Band and detector localization.} To distinguish cross-band registration in the three-band
+rendering from a single detector, the clean cutouts are decomposed into colour channels over 1,000
+matched \texttt{flag = 1} pairs. The contrast is absent in the B channel ($g$ band, $-0.005 \pm 0.044$),
+marginal in R ($i$ band, $+0.088 \pm 0.045$, $2.0\sigma$), and carried by the G channel ($r$ band:
+camcol 5 $+0.238$ against $-0.055$ elsewhere, contrast $+0.293 \pm 0.044$, $6.6\sigma$). The luminance
+combination dilutes it to $+0.138 \pm 0.045$ ($3.1\sigma$) by averaging in the unperturbed g channel.
+A pilot measurement of the raw r-band calibrated frames (159 galaxies, 79 in camcol 5) confirms the
+signal outside the JPEG: after correcting the parity inversion between the FITS array convention
+and the north-up cutouts (the per-galaxy sign agreement is 0.70 after the flip), the unstretched
+r-band images give $+0.291$ in camcol 5 against $-0.100$ elsewhere, a contrast of
+$+0.391 \pm 0.156$ ($2.5\sigma$). The 669 field stars show no significant asymmetry ($-0.09 \pm 0.13$ in
+camcol 5 against $+0.12 \pm 0.17$ elsewhere; difference $-0.21 \pm 0.21$), a weak null that does not
+exclude a PSF effect at radii larger than the 1-8 pixels used. The anomaly is therefore
+localized to extended-source imaging in the r-band detector of camera column 5 ($r_5$), not to the
+PSF, to the JPEG rendering or to cross-band registration.
+
+\section{Discussion}
+\paragraph{The published amplitude spread.} A sample that includes band-poor detections from a
+camera column with a detection-related offset reports an inflated positive amplitude; a bright,
+resolved selection excludes that regime by construction and recovers a near-zero monopole. The two
+orders of magnitude separating the published values are consistent with differences in selection,
+before any question about the sky is asked.
+
+\paragraph{Why the field missed it.} The selection that creates the excess, poor detection, is the
+same selection that keeps those objects out of volunteer, classification and training samples.
+
+\paragraph{The open question.} Channel decomposition and raw FITS measurements localize the excess
+to extended-source imaging in a single detector ($r_5$), while excluding the stellar PSF, the JPEG
+compression and cross-band registration. Why the \texttt{TOO\_FEW\_GOOD\_DETECTIONS} regime amplifies
+the phase gradient specifically within the $r_5$ detector, whether through a threshold-entry
+selection bias or a sub-pixel charge-transfer or readout asymmetry at low surface brightness, is not
+resolved by the survey products alone.
+
+\section{Conclusions}
+\begin{enumerate}
+\item One operator, two disjoint sky samples, 26,727 galaxies, no coordinate grid.
+\item The handedness amplitude is carried by one camera column ($+0.1209$ against $-0.0063$), and
+the excess is confined to galaxies flagged \texttt{TOO\_FEW\_GOOD\_DETECTIONS}.
+\item The well-detected galaxies show no column difference and no net amplitude
+($+0.0071 \pm 0.0112$): the apparent signal is not present where the measurement is reliable.
+\item The column offsets are calibrated as a function of detection quality and size; the camcol-5
+band-poor offset is about $+0.20$.
+\item After the correction the sample amplitude is $-0.0116 \pm 0.017$: no significant net
+handedness is detected at this sensitivity.
+\item The anomaly is localized to extended-source imaging in the r-band detector of camera column 5
+($r_5$); the sub-pixel transfer mechanism within that detector is not identified; the calibration
+and the conditional null are published so that the debate can be settled on data that carry
+neither.
+\end{enumerate}
+
+\section*{Acknowledgements}
+Funding for the Sloan Digital Sky Survey IV has been provided by the Alfred P. Sloan Foundation, the
+U.S. Department of Energy Office of Science, and the Participating Institutions. SDSS acknowledges
+support and resources from the Center for High-Performance Computing at the University of Utah. The
+SDSS Web site is \texttt{www.sdss.org}. This work used the SDSS SkyServer cutout service
+\citep{sdssdr18} and the Galaxy Zoo classifications \citep{lintott2008, masters2021}. The analysis code, the numerical cross-checks and the preparation of this manuscript used the
+DeepSeek Harness (DSH) agent; the independent referee-style review that shaped the final revision
+was provided by Gemini. Every reported number was checked against the frozen data (Section 9). This research received no external funding. The author thanks the SDSS and Galaxy Zoo teams for making the data
+public.
+
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=0.9\textwidth]{../figures/fig1_sky_columns.png}
+\caption{Sky distribution of the two samples and the galaxy count per camera column.}
+\label{fig:sky}
+\end{figure*}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\columnwidth]{../figures/fig2_columns.png}
+\caption{Per-column amplitude with jackknife errors, against the five-column mean.}
+\label{fig:columns}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\columnwidth]{../figures/fig3_flags.png}
+\caption{Amplitude against detection quality.}
+\label{fig:flags}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\columnwidth]{../figures/fig4_clean_model.png}
+\caption{The good-detection subset: the six columns against zero, with the two-sigma band.}
+\label{fig:clean_model}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\columnwidth]{../figures/fig5_injection.png}
+\caption{The injection test.}
+\label{fig:injection}
+\end{figure}
+
+\section{Data and code availability}
+The analysis code and the derived measurements are released as a self-contained package: the
+operator, the sample construction and the single-linkage deduplication, the jackknife and bootstrap
+errors, the column calibration, the figure scripts and eighteen unit tests, together with the frozen
+per-galaxy measurements and the calibration table. Four Makefile targets reproduce the paper:
+\texttt{make check} recomputes the per-column and flag tables, \texttt{make calibrate} recomputes
+the column calibration and the corrected amplitude, \texttt{make test} runs the unit tests and
+\texttt{make figures} regenerates the figures. The package is available from the public repository \url{https://github.com/kqalea/sdss-cam5-anomaly}
+and is archived on Zenodo at \href{https://doi.org/10.5281/zenodo.24112428}{doi:10.5281/zenodo.24112428}.
+
+\begin{thebibliography}{99}
+\bibitem[Hayes et al.(2017)]{hayes2017} Hayes, W. B., Davis, D., \& Silva, P. 2017, MNRAS, 466, 3928. DOI: 10.1093/mnras/stw3290.
+\bibitem[Iye et al.(2020)]{iye2020} Iye, M., et al. 2020, MNRAS, 496, 4276.
+\bibitem[Land et al.(2008)]{land2008} Land, K., et al. 2008, MNRAS, 388, 1686. DOI: 10.1111/j.1365-2966.2008.13490.x.
+\bibitem[Longo(2011)]{longo2011} Longo, M. J. 2011, Physics Letters B, 699, 224. DOI: 10.1016/j.physletb.2011.04.008.
+\bibitem[Shamir(2012)]{shamir2012} Shamir, L. 2012, Physics Letters B, 715, 25. DOI: 10.1016/j.physletb.2012.07.054.
+\bibitem[Shamir(2017)]{shamir2017} Shamir, L. 2017, PASA, 34, e011. DOI: 10.1017/pasa.2017.4.
+\bibitem[Shamir(2024)]{shamir2024} Shamir, L. 2024, PASA, 41, e038. DOI: 10.1017/pasa.2024.20.
+\bibitem[Almeida et al.(2023)]{sdssdr18} Almeida, A., et al. 2023, ApJS, 267, 44.
+\bibitem[Lintott et al.(2008)]{lintott2008} Lintott, C. J., et al. 2008, MNRAS, 389, 1179.
+\bibitem[Masters et al.(2021)]{masters2021} Masters, K. L., et al. 2021, MNRAS, 507, 4389.
+\bibitem[DESI chirality release(2026)]{desi2026} An observed-label chirality-dipole null in 949,584 high-confidence DESI spirals and an 8.5-million-galaxy catalogue. Zenodo 21461899.
+\end{thebibliography}
+
+\end{document}\end{document}
+\end{document}
