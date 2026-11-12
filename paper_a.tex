@@ -119,6 +119,13 @@ the clean grid-free cutouts, the first sample contains 11,271 unique galaxies an
 contains 15,456 unique galaxies, yielding a combined catalogue of 26,727 unique galaxies
 (Fig.~\ref{fig:sky}, left panel).
 
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{../figures/fig1_sky_columns.png}
+\caption{Sky distribution of the two samples and the galaxy count per camera column.}
+\label{fig:sky}
+\end{figure}
+
 Cutouts are $128 \times 128$ pixels at $0.396$ arcsec per pixel, a 50.7 arcsec field, fetched from
 the SkyServer \texttt{ImgCutout} service. The sampling radius is
 $r_k = \mathrm{clip}(\mathrm{petroRad}_r/0.396, 6, 60)$ pixels.
@@ -183,6 +190,13 @@ $2.8\sigma$).
 \subsection{The camera column}
 The amplitude is carried by one column (Table~\ref{tab:columns} and Fig.~\ref{fig:columns}).
 
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.5\textwidth]{../figures/fig2_columns.png}
+\caption{Per-column amplitude with jackknife errors, against the five-column mean.}
+\label{fig:columns}
+\end{figure}
+
 \begin{table}[h]
 \centering
 \caption{Per-column amplitude across the combined sample ($N = 26,727$).}
@@ -217,6 +231,13 @@ elsewhere, and the excess is concentrated in that band-poor subset (the unflagge
 residual is $+0.0327 \pm 0.026$) (Table~\ref{tab:flags} and
 Fig.~\ref{fig:flags}).
 
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.55\textwidth]{../figures/fig3_flags.png}
+\caption{Amplitude against detection quality.}
+\label{fig:flags}
+\end{figure}
+
 \begin{table}[h]
 \centering
 \caption{The detection-selection split (independent-sky sample, $N = 15,456$).}
@@ -250,6 +271,13 @@ At two sigma this excludes $|A| > 0.030$ for this operator in this subset. After
 operator dilution of Section 3 it corresponds to an intrinsic sky asymmetry below about 0.08 to
 0.10. It is consistent with
 zero; it is a bound, not a detection.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.5\textwidth]{../figures/fig4_clean_model.png}
+\caption{The good-detection subset: the six columns against zero, with the two-sigma band.}
+\label{fig:clean_model}
+\end{figure}
 
 \subsection{The column calibration}
 The five non-camcol-5 columns provide the reference. The offset is measured per column, per detection flag, and in three sampling-radius bins (edges at
@@ -312,6 +340,13 @@ amplifiers ($+0.166$ on amplifier 0, $+0.245$ on amplifier 1); the central 1000-
 $+0.342$ but contains only 55 objects, so the test does not localize the effect to the central
 bad-column group.
 
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.5\textwidth]{../figures/fig5_injection.png}
+\caption{The injection test.}
+\label{fig:injection}
+\end{figure}
+
 \paragraph{Band and detector localization.} To distinguish cross-band registration in the three-band
 rendering from a single detector, the clean cutouts are decomposed into colour channels over 1,000
 matched \texttt{flag = 1} pairs. The contrast is absent in the B channel ($g$ band, $-0.005 \pm 0.044$),
@@ -368,41 +403,6 @@ support and resources from the Center for High-Performance Computing at the Univ
 SDSS Web site is \texttt{www.sdss.org}. This work used the SDSS SkyServer cutout service
 \cite{sdssdr18} and the Galaxy Zoo classifications \cite{lintott2008, masters2021}. Every reported number was checked against the frozen data (Section 9). This research received no external funding. The author thanks the SDSS and Galaxy Zoo teams for making the data
 public.
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.85\textwidth]{../figures/fig1_sky_columns.png}
-\caption{Sky distribution of the two samples and the galaxy count per camera column.}
-\label{fig:sky}
-\end{figure}
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.5\textwidth]{../figures/fig2_columns.png}
-\caption{Per-column amplitude with jackknife errors, against the five-column mean.}
-\label{fig:columns}
-\end{figure}
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.55\textwidth]{../figures/fig3_flags.png}
-\caption{Amplitude against detection quality.}
-\label{fig:flags}
-\end{figure}
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.5\textwidth]{../figures/fig4_clean_model.png}
-\caption{The good-detection subset: the six columns against zero, with the two-sigma band.}
-\label{fig:clean_model}
-\end{figure}
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.5\textwidth]{../figures/fig5_injection.png}
-\caption{The injection test.}
-\label{fig:injection}
-\end{figure}
 
 \section{Data and code availability}
 The analysis code and the derived measurements are released as a self-contained package: the
