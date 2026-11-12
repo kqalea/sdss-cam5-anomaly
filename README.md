@@ -1,6 +1,6 @@
 # SDSS cam5 anomaly — Paper A replication package
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24112428.svg)](https://doi.org/10.5281/zenodo.24112428)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24150030.svg)](https://doi.org/10.5281/zenodo.24150030)
 
 
 **A camera-column dependence in SDSS handedness measurements: localization, calibration and a conditional null**
@@ -43,7 +43,7 @@ LICENSE             code MIT, data CC BY 4.0
 
 ## Cite
 
-If you use this code or the measurements, cite the paper and this repository. DOI: 10.5281/zenodo.24112428 (https://doi.org/10.5281/zenodo.24112428).
+If you use this code or the measurements, cite the paper and this repository. DOI: 10.5281/zenodo.24150030 (https://doi.org/10.5281/zenodo.24150030).
 
 ## Licence
 
