@@ -5,7 +5,7 @@ authors:
   - family-names: Chen
     given-names: Yen-Fu
     affiliation: "Jecision Digital Co., Ltd., New Taipei City, Taiwan"
-version: "1.0.0"
+version: "1.0.2"
 license: MIT
 repository-code: "https://github.com/kqalea/Kerr-Cartan"
 keywords:
